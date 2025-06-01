@@ -1,49 +1,148 @@
-/* Navigation*/
-  
-  nav {
-    background-color: #1f2937; /* dunkles Grau/Blau */
-    color: white;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+/* === Light Mode (Standard) === */
+:root {
+  /* Haupt-Farben */
+  --nav-bg: #1f2937;         /* dunkles Grau-Blau */
+  --nav-text: #ffffff;       /* weiße Schrift in Navbar */
+  --nav-link-hover: #d1d5db; /* helleres Grau für Hover */
 
-  /* Der Link zur Mainpage (links) - etwas größer */
-  .nav-logo {
-    font-size: 1.25rem;
-    font-weight: 600;
-    text-decoration: none;
-    color: white;
-  }
+  --body-bg: #fafafa;        /* Hellgrauer Seitenhintergrund */
+  --body-text: #111827;      /* Dunkles Grau/Schwarz für Text */
 
-  /* Container für die Navigations-Links (rechts) */
-  .nav-links a {
-    color: white;
-    text-decoration: none;
-    margin-left: 1rem;
-    font-weight: 500;
-  }
+  /* Karten und Elemente */
+  --card-bg: #f0f8ff;        /* sehr helles Blau für Karten */
+  --card-border: #cccccc;    /* hellgrauer Rahmen */
+  --card-shadow: rgba(0, 0, 0, 0.1);
 
-  .nav-links a:hover {
-    text-decoration: underline;
-  }
+  --table-header-bg: #f5f5f5; /* Helles Grau für Tabellenkopf */
+  --table-border: #cccccc;   /* Rahmen Farbe */
+  --table-row-hover: #fafafa;/* Zeilen-Hover Farbe */
 
-  /* Hauptbereich unterhalb der Navigation */
-  main {
-    padding: 1rem;
-  }
+  --link-new-bg: #28a745;    /* Grün für "Neues Race anlegen" */
+  --link-new-hover: #218838; /* Dunkleres Grün bei Hover */
+  --btn-save-bg: #36cc00;    /* Grün für "Speichern" */
+  --btn-save-hover: #019b09; /* Dunkler bei Hover */
 
-  /* --------------------------------------------------------
-    „Driver/Constructor Standings“ – Übersicht 
+  /* Race Card */
+  --race-card-bg: #ffffff;   /* Weiße Karten */
+  --race-flag-bg: #eeeeee;   /* Hellgrau, falls Bild fehlt */
+
+  /* Meta-Texte */
+  --meta-text: #374151;      /* Dunkles Grau (etwas wärmer) */
+  --sub-text: #555555;       /* Mittelgrau */
+  --no-data-text: #666666;   /* Grautöne für "Keine Daten verfügbar" */
+
+  /* FastestLap Cell */
+  --fl-cell-text: #6b7280;   /* Graues, kleineres Text */
+  --no-fl-color: #9ca3af;    /* Noch helleres Grau */
+}
+
+/* === Dark Mode Overrides === */
+[data-theme="dark"] {
+  --nav-bg: #111827;         /* sehr dunkles Grau für Navbar */
+  --nav-text: #f9fafb;       /* fast weiß für Links */
+  --nav-link-hover: #e5e7eb; /* helleres Grau für Hover */
+
+  --body-bg: #1f2937;        /* dunkles Grau als Seitenhintergrund */
+  --body-text: #f3f4f6;      /* helles Grau/Weiß für Text */
+
+  --card-bg: #374151;        /* Dunkles Blau/Grau für Karten */
+  --card-border: #4b5563;    /* Dunkelgrau Rahmen */
+  --card-shadow: rgba(0, 0, 0, 0.5);
+
+  --table-header-bg: #374151; /* Dunkles Grau für Tabellenkopf */
+  --table-border: #4b5563;    /* Etwas dunklerer Rand */
+  --table-row-hover: #334155; /* Dunkler Hovereffekt */
+
+  --link-new-bg: #22c55e;     /* Etwas dezenteres Grün */
+  --link-new-hover: #16a34a;  /* Dunkler bei Hover */
+  --btn-save-bg: #22c55e;     /* Passend zum Dark Mode */
+  --btn-save-hover: #166534;  /* Dunkler */
+
+  --race-card-bg: #1e293b;    /* Dunklere Karte im Dark Mode */
+  --race-flag-bg: #2d3748;    /* Etwas dunkleres Grau */
+
+  --meta-text: #d1d5db;       /* Helles Grau für Metadaten */
+  --sub-text: #cbd5e1;        /* Noch helleres Grau */
+  --no-data-text: #9ca3af;    /* Für "Keine Daten verfügbar" */
+
+  --fl-cell-text: #9ca3af;    /* Hellere Farbe für FastestLap */
+  --no-fl-color: #6b7280;     /* Etwas dunkleres Grau */
+}
+
+
+/* --------------------------------------------------------
+   Global (Body, Hauptbereich)
    -------------------------------------------------------- */
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background-color: var(--body-bg);
+  color: var(--body-text);
+}
 
+main {
+  padding: 1rem;
+  background-color: var(--body-bg);
+  color: var(--body-text);
+}
+
+/* --------------------------------------------------------
+   Navigation
+   -------------------------------------------------------- */
+nav {
+  background-color: var(--nav-bg);
+  color: var(--nav-text);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--nav-text);
+}
+
+.nav-links a {
+  color: var(--nav-text);
+  text-decoration: none;
+  margin-left: 1rem;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  /* Farbe ändern */
+  color: var(--nav-link-hover);
+}
+
+/* Theme-Toggle Button */
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  color: var(--nav-text);
+  margin-left: 1rem;
+  /* Padding und Rundung */
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+}
+.theme-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* --------------------------------------------------------
+   Driver/Constructor Standings – Übersicht
+   -------------------------------------------------------- */
 .page-heading {
   font-size: 1.5rem;
   margin-bottom: 1rem;
+  color: var(--body-text);
 }
 
-/* Grid‐Container: flexible Kacheln pro Season */
 .grid-container {
   display: grid;
   gap: 1rem;
@@ -51,152 +150,172 @@
   padding: 1rem;
 }
 
-/* Einzelne Season‐Kachel */
+/* Einzelne Season-Kachel */
 .season-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid #ccc;
+  border: 1px solid var(--card-border);
   border-radius: 8px;
   padding: 2rem;
   text-decoration: none;
-  color: inherit;
-  background-color: #f0f8ff;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+  color: var(--body-text);
+  background-color: var(--card-bg);
+  box-shadow: 1px 1px 4px var(--card-shadow);
   transition: transform 0.1s ease-in-out;
 }
-
-/* Hover‐Effekt für Season‐Karte */
 .season-card:hover {
   transform: scale(1.03);
 }
-
-/* Text in der Kachel */
 .season-text {
   font-size: 1.25rem;
   font-weight: bold;
+  color: var(--body-text);
 }
 
 /* --------------------------------------------------------
-  „Driver/Constructor Standings“ – Detail
+   Driver/Constructor Standings – Detail
    -------------------------------------------------------- */
-
 .no-data {
   font-style: italic;
-  color: #666;
+  color: var(--no-data-text);
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
+  margin-bottom: 2rem;
+  color: var(--body-text);
 }
 
 th,
 td {
   padding: 0.5rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--table-border);
   text-align: left;
 }
 
 th {
-  background-color: #f5f5f5;
+  background-color: var(--table-header-bg);
+  color: var(--body-text);
 }
 
 /* --------------------------------------------------------
-  „Races“ – Übersicht
+   Races – Übersicht
    -------------------------------------------------------- */
-
 .page-heading {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  .new-link {
-    display: inline-block;
-    margin-bottom: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: #28a745;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-  }
-  .new-link:hover {
-    background-color: #218838;
-  }
-  .grid-wrapper {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    padding: 1rem;
-  }
-  .race-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-  }
-  .race-flag {
-    width: 100%;
-    height: 140px;
-    object-fit: cover;    /* Bild füllt die obere Fläche, zentriert und gegebenenfalls beschnitten */
-    background-color: #eee; /* Falls Bild fehlt, grauer Hintergrund */
-  }
-  .race-content {
-    padding: 0.75rem;
-    flex: 1;              /* der restliche Bereich für Text */
-    display: flex;
-    flex-direction: column;
-  }
-  .race-title {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.2rem;
-  }
-  .race-sub {
-    margin: 0.25rem 0;
-    font-size: 0.9rem;
-    color: #555;
-  }
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--body-text);
+}
+
+.new-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--link-new-bg);
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.1s ease-in-out;
+}
+.new-link:hover {
+  background-color: var(--link-new-hover);
+}
+
+.grid-wrapper {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  padding: 1rem;
+}
+
+.race-card {
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 1px 1px 4px var(--card-shadow);
+  text-decoration: none;
+  color: var(--body-text);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--race-card-bg);
+  transition: transform 0.1s ease-in-out;
+}
+.race-card:hover {
+  transform: scale(1.02);
+}
+
+.race-flag {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  background-color: var(--race-flag-bg);
+}
+
+.race-content {
+  padding: 0.75rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  color: var(--body-text);
+}
+
+.race-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.2rem;
+  color: var(--body-text);
+}
+
+.race-sub {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  color: var(--sub-text);
+}
 
 /* --------------------------------------------------------
-  „Races → Neu anlegen“
+    Races → Neu anlegen
    -------------------------------------------------------- */
-
 form {
   max-width: 500px;
   margin: 1rem auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  background-color: var(--body-bg);
+  color: var(--body-text);
 }
 
 label {
   display: flex;
   flex-direction: column;
   font-weight: bold;
+  color: var(--body-text);
 }
 
 input,
 select {
   padding: 0.5rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--card-border);
   border-radius: 4px;
+  background-color: var(--race-card-bg);
+  color: var(--body-text);
 }
 
 textarea {
   padding: 0.5rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
+  border: 1px solid var(--card-border);
   border-radius: 4px;
   min-height: 100px;
+  background-color: var(--race-card-bg);
+  color: var(--body-text);
 }
 
 .small-note {
   font-size: 0.9rem;
+  color: var(--body-text);
 }
 
 button {
@@ -205,59 +324,58 @@ button {
   font-size: 1rem;
   border: none;
   border-radius: 4px;
-  background-color: #36cc00; /* Grün ↔ "Speichern" */
-  color: white;
+  background-color: var(--btn-save-bg);
+  color: #ffffff;
   cursor: pointer;
+  transition: background-color 0.1s ease-in-out;
 }
-
 button:hover {
-  background-color: #019b09; /* etwas dunkleres Grün */
+  background-color: var(--btn-save-hover);
 }
 
 /* --------------------------------------------------------
-   „Races → Detail“
+    Races → Detail
    -------------------------------------------------------- */
-
-/* Überschrift + Metadaten oben */
 .race-heading {
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
+  color: var(--body-text);
 }
 
 .race-meta {
   margin-bottom: 1rem;
   font-size: 0.9375rem; /* 15px */
-  color: #374151;       /* dunkles Grau */
+  color: var(--meta-text);
 }
 
-/* Tabellenschnittstelle */
 table {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 1rem;
+  color: var(--body-text);
 }
 
 th,
 td {
   padding: 0.5rem;
-  border-bottom: 1px solid #d1d5db; /* sehr helles Grau */
+  border-bottom: 1px solid var(--table-border);
   text-align: left;
 }
 
 thead {
-  background-color: #f3f4f6; /* hellgrau */
+  background-color: var(--table-header-bg);
 }
 
 tr:hover {
-  background-color: #fafafa;
+  background-color: var(--table-row-hover);
 }
 
 .fl-cell {
   font-size: 0.875rem;
-  color: #6b7280;
+  color: var(--fl-cell-text);
 }
 
 .no-fl {
-  color: #9ca3af;
+  color: var(--no-fl-color);
 }
