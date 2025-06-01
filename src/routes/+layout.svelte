@@ -1,35 +1,59 @@
-<script>
-  import "./styles.css";
-  let { children } = $props();
+<!-- src/routes/+layout.svelte -->
+<script runes>
+  // Im Layout brauchen wir aktuell keine weitere Logik.
 </script>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">Music DB</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="/artists">Artists</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/albums">Albums</a>
-        </li>
-      </ul>
-    </div>
+<style>
+  /* --------------------------------------------------------
+     Navigation - dunkelgrauer Hintergrund, weiße Schrift
+     -------------------------------------------------------- */
+  nav {
+    background-color: #1f2937; /* dunkles Grau/Blau */
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Der Link zur Mainpage (links) - etwas größer */
+  .nav-logo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: white;
+  }
+
+  /* Container für die Navigations-Links (rechts) */
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1rem;
+    font-weight: 500;
+  }
+
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+
+  /* Hauptbereich unterhalb der Navigation */
+  main {
+    padding: 1rem;
+  }
+</style>
+
+<nav>
+  <!-- Ganz links: Title/Logo, das auf "/" zeigt -->
+  <a href="/" class="nav-logo">F1 Race Results</a>
+
+  <!-- Rechts: Links zu den Haupt-Seiten -->
+  <div class="nav-links">
+    <a href="/races">Races</a>
+    <a href="/driver-standings">Driver Standings</a>
+    <a href="/constructor-standings">Constructor Standings</a>
   </div>
 </nav>
 
-<div class="container mt-3">
-  {@render children()}
-</div>
+<main>
+  <slot />
+</main>
