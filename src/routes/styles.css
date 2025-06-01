@@ -1,3 +1,45 @@
-h1 {
-    color: orangered;
+
+/* --- 0.1) Light Mode (Standard) --- */
+:root {
+  /* Hintergrund- und Textfarben */
+  --bg-color: #ffffff;
+  --text-color: #212529;
+
+  /* Sekundäre Hintergründe (z.B. Karten, Wrapper, Formulare) */
+  --card-bg: #f8f9fa;
+  --card-border: #dee2e6;
+
+  /* Tabellen-Hintergrund (Header) */
+  --table-header-bg: #e9ecef;
+  --table-row-hover: #f1f1f1;
+
+  /* Link-Farbe, Button-Farben etc. */
+  --primary: #0d6efd;       /* Bootstrap-Standard-Blau */
+  --primary-hover: #0b5ed7; /* dunkleres Blau */
+  --secondary: #6c757d;     /* Bootstrap-Standard-Grau */
+  --success: #198754;       /* Bootstrap-Grün für Buttons o.Ä. */
+
+  /* Text- und Akzentfarben */
+  --text-muted: #6c757d;
+  --text-light: #f8f9fa;
+}
+
+/* --- 0.2) Dark Mode (aktiv, wenn data-theme="dark") --- */
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+
+  --card-bg: #1e1e1e;
+  --card-border: #333333;
+
+  --table-header-bg: #2a2a2a;
+  --table-row-hover: #2e2e2e;
+
+  --primary: #0d6efd;       /* kannst hier ggf. eine hellere Version setzen */
+  --primary-hover: #0b5ed7;
+  --secondary: #a0a0a0;
+  --success: #198754;
+
+  --text-muted: #888888;
+  --text-light: #f8f9fa;
 }
