@@ -34,6 +34,10 @@
   /* FastestLap Cell */
   --fl-cell-text: #6b7280;   /* Graues, kleineres Text */
   --no-fl-color: #9ca3af;    /* Noch helleres Grau */
+
+  /* Welcome Page*/
+  --welcome-link: #1d4ed8;       /* dunkelblau */
+  --welcome-link-hover: #1e40af; /* etwas dunkler */
 }
 
 /* === Dark Mode Overrides === */
@@ -67,6 +71,10 @@
 
   --fl-cell-text: #9ca3af;    /* Hellere Farbe für FastestLap */
   --no-fl-color: #6b7280;     /* Etwas dunkleres Grau */
+
+  /*Welcome page*/
+  --welcome-link: #60a5fa;       /* Tailwind „blue-400“ */
+  --welcome-link-hover: #3b82f6; /* Tailwind „blue-500“ */
 }
 
 
@@ -136,6 +144,69 @@ nav {
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* ----------------------------------------------------------------------------
+  Welcome‐Seite
+   ---------------------------------------------------------------------------- */
+.welcome-image {
+  display: block;            /* Block‐Element, damit margin: auto wirkt */
+  max-width: 80%;           /* Bild skaliert nie breiter als Container */
+  height: auto;              /* Seitenverhältnis bleibt erhalten */
+  margin: 1.5rem auto;       /* oben und unten 1.5rem Abstand, zentriert */
+  border-radius: 20px;        /* optional: abgerundete Ecken */
+  box-shadow: 1px 1px 6px var(--card-shadow);
+}
+.welcome-container {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background-color: var(--race-card-bg); /* z. B. weiß/hell im Light Mode, dunkel im Dark Mode */
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  box-shadow: 1px 1px 6px var(--card-shadow);
+}
+
+.welcome-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--body-text);
+  text-align: center;
+}
+
+.welcome-subtitle {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--body-text);
+}
+
+.welcome-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  color: var(--body-text);
+}
+
+.welcome-list-numbered {
+  margin-left: 1.25rem;
+  list-style-type: decimal;
+  color: var(--body-text);
+}
+
+.welcome-list-numbered li {
+  margin-bottom: 0.5rem;
+}
+
+.link-highlight {
+  color: var(--welcome-link);
+  text-decoration: underline;
+}
+
+.welcome-note {
+  margin-top: 2rem;
+  font-style: italic;
+  text-align: center;
+  color: var(--no-data-text);
+}
 
 /* --------------------------------------------------------
    Driver/Constructor Standings – Übersicht

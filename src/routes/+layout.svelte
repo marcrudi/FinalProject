@@ -2,8 +2,8 @@
 <script runes>
   import { onMount } from "svelte";
   
-  // Aktuelles Theme: "light" oder "dark"
-  let theme = "light";
+  // Default auf "dark" setzen
+  let theme = "dark";
 
   // Beim ersten Laden ins localStorage schauen, 
   // falls schon mal ausgewählt --> setzen, ansonsten standard "light".
