@@ -5,5 +5,8 @@ export default {
       edge: false,
       split: false,
     }),
+    compilerOptions: {
+      runes: true
+    }
   },
 };
