@@ -9,7 +9,11 @@
   // falls schon mal ausgewählt --> setzen, ansonsten standard "light".
   onMount(() => {
     const saved = localStorage.getItem("theme");
-    theme = saved === "dark" ? "dark" : "light";
+    if (saved === "light" || saved === "dark") {
+      // Wenn schon ein gespeichertes Theme existiert, dieses übernehmen
+      theme = saved;
+    }
+    // Ansonsten bleibt theme = "dark"
     document.documentElement.setAttribute("data-theme", theme);
   });
 
