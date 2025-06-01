@@ -14,63 +14,6 @@
 
 </script>
 
-<style>
-  .page-heading {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  .new-link {
-    display: inline-block;
-    margin-bottom: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: #28a745;
-    color: white;
-    text-decoration: none;
-    border-radius: 4px;
-  }
-  .new-link:hover {
-    background-color: #218838;
-  }
-  .grid-wrapper {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    padding: 1rem;
-  }
-  .race-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-  }
-  .race-flag {
-    width: 100%;
-    height: 140px;
-    object-fit: cover;    /* Bild füllt die obere Fläche, zentriert und gegebenenfalls beschnitten */
-    background-color: #eee; /* Falls Bild fehlt, grauer Hintergrund */
-  }
-  .race-content {
-    padding: 0.75rem;
-    flex: 1;              /* der restliche Bereich für Text */
-    display: flex;
-    flex-direction: column;
-  }
-  .race-title {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.2rem;
-  }
-  .race-sub {
-    margin: 0.25rem 0;
-    font-size: 0.9rem;
-    color: #555;
-  }
-</style>
-
 <main>
   <h1 class="page-heading">Übersicht aller Rennen</h1>
   <a href="/races/new" class="new-link">+ Rennen anlegen</a>

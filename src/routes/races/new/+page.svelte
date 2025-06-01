@@ -5,43 +5,6 @@
   export let data;
 </script>
 
-<style>
-  form {
-    max-width: 500px;
-    margin: 1rem auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  label {
-    display: flex;
-    flex-direction: column;
-    font-weight: bold;
-  }
-  input {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  .error {
-    color: #b00020;
-    font-size: 0.9rem;
-  }
-  button {
-    align-self: flex-start;
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 4px;
-    background-color: #007acc;
-    color: white;
-    cursor: pointer;
-  }
-  button:hover {
-    background-color: #005fa3;
-  }
-</style>
 
 <main>
   <h1>Neues Rennen anlegen</h1>
@@ -54,13 +17,13 @@
   <form method="POST">
     <!-- saison (number) -->
     <label>
-      Saison (z. B. 2025):
+      Saison :
       <input name="season" type="number" required min="1900" placeholder="2025" />
     </label>
 
     <!-- runde (number) -->
     <label>
-      Runde (z. B. 5):
+      Runde :
       <input name="round" type="number" required min="1" placeholder="1" />
     </label>
 
