@@ -313,3 +313,52 @@ export async function getConstructorStandingsBySeason(season) {
     ])
     .toArray();
 }
+
+/**
+* Erstellt ein neues Rennen in der Collection "races".
+ * Weist automatisch eine neue _id zu (nächst­größter numerischer Wert).
+ *
+ * @param {Object} raceData
+ *   Muss folgende Felder enthalten:
+ *   { season: number,
+ *     round: number,
+ *     name: string,
+ *     date: string,              // z.B. "2025-07-12"
+ *     circuit: {
+ *       name: string,
+ *       location: string,
+ *       country: string
+ *     }
+ *   }
+ * @returns {Promise<Object>} das eingefügte Renn-Objekt inkl. _id
+ */
+
+export async function createRace(raceData) {
+  // 1) Collection-Handle holen
+  const coll = await getCollection("races");
+
+  // 2) Ermitteln der bisher höchsten _id, um eine neue Nummer zu vergeben
+  const lastRace = await coll.find().sort({ _id: -1 }).limit(1).toArray();
+  let nextId = 1;
+  if (lastRace.length > 0) {
+    nextId = lastRace[0]._id + 1;
+  }
+
+  // 3) Neues Rennen zusammenbauen und automatisch _id setzen
+  const newRace = {
+    _id: nextId,
+    season: raceData.season,
+    round: raceData.round,
+    name: raceData.name,
+    date: raceData.date,
+    circuit: {
+      name:            raceData.circuit.name,
+      location:        raceData.circuit.location,
+      country:         raceData.circuit.country
+    }
+  };
+
+  // 4) Einfügen in die DB
+  await coll.insertOne(newRace);
+  return newRace;
+}

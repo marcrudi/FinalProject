@@ -28,7 +28,7 @@
 </style>
 
 <main>
-  <h1 class="page-heading">Konstrukteurs-Standings {season}</h1>
+  <h1 class="page-heading">Constructor-Standings {season}</h1>
 
   {#if constructorStandings.length === 0}
     <p class="no-data">Keine Konstrukteurs-Punkte für Saison {season} gefunden.</p>

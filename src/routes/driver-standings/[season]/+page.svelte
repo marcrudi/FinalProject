@@ -29,7 +29,7 @@
 </style>
 
 <main>
-  <h1 class="page-heading">Fahrer-Standings {season}</h1>
+  <h1 class="page-heading">Driver-Standings {season}</h1>
 
   {#if driverStandings.length === 0}
     <p class="no-data">Keine Fahrer-Punkte für Saison {season} gefunden.</p>
