@@ -12,8 +12,6 @@
     return `/flags/${fileName}`;
   }
 
-  // Nur zu Debug‐Zwecken:
-  console.log("Races aus DB:", races);
 </script>
 
 <style>
@@ -52,7 +50,7 @@
   }
   .race-flag {
     width: 100%;
-    height: 120px;
+    height: 140px;
     object-fit: cover;    /* Bild füllt die obere Fläche, zentriert und gegebenenfalls beschnitten */
     background-color: #eee; /* Falls Bild fehlt, grauer Hintergrund */
   }

@@ -44,7 +44,7 @@
 
 <nav>
   <!-- Ganz links: Title/Logo, das auf "/" zeigt -->
-  <a href="/" class="nav-logo">F1 Race Results</a>
+  <a href="/" class="nav-logo">F1 Results</a>
 
   <!-- Rechts: Links zu den Haupt-Seiten -->
   <div class="nav-links">

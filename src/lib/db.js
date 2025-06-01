@@ -65,18 +65,6 @@ export async function getDrivers() {
   return coll.find().sort({ lastName: 1 }).toArray();
 }
 
-/**
- * Gibt einen einzelnen Fahrer anhand einer numerischen ID zurück.
- *
- * @param {string} idString - Die _id des Fahrers als String (z.B. "55").
- * @returns {Promise<Object | null>}
- */
-export async function getDriverById(idString) {
-  const coll = await getCollection("drivers");
-  // Wandelt idString in eine Zahl um, z.B. "55" → 55
-  const idNum = Number(idString);
-  return coll.findOne({ _id: idNum });
-}
 
 /**
  * Gibt alle Konstrukteurs-Dokumente zurück, sortiert nach Name.
@@ -88,17 +76,6 @@ export async function getConstructors() {
   return coll.find().sort({ name: 1 }).toArray();
 }
 
-/**
- * Gibt einen einzelnen Konstrukteur anhand einer numerischen ID zurück.
- *
- * @param {string} idString - Die _id des Konstrukteurs als String (z.B. "8").
- * @returns {Promise<Object | null>}
- */
-export async function getConstructorById(idString) {
-  const coll = await getCollection("constructors");
-  const idNum = Number(idString);
-  return coll.findOne({ _id: idNum });
-}
 
 /**
  * Gibt alle Rennen zurück, sortiert nach Datum (absteigend: neueste zuerst).
@@ -161,95 +138,6 @@ export async function getResultsByRace(raceIdString) {
       { $unwind: "$constructorInfo" },
       // 4) Sortierung nach Renn-Position
       { $sort: { position: 1 } }
-    ])
-    .toArray();
-}
-
-/**
- * Berechnet die Driver Championship Standings:
- * Groupiert nach driverId (numeric), summiert alle Punkte, und bindet Fahrer-Details ein.
- *
- * @returns {Promise<Array>}
- *   Jedes Objekt enthält { driverId, code, name, nationality, totalPoints }.
- */
-export async function getDriverStandings() {
-  const coll = await getCollection("results");
-  return coll
-    .aggregate([
-      // 1) Gruppieren nach driverId (Numeric) und Punkte aufsummieren
-      {
-        $group: {
-          _id: "$driverId",
-          totalPoints: { $sum: "$points" }
-        }
-      },
-      // 2) Lookup: Fahrer-Daten aus "drivers" einbinden (ebenfalls Numeric _id)
-      {
-        $lookup: {
-          from: "drivers",
-          localField: "_id",       // driverId aus dem Group-Step
-          foreignField: "_id",     // numeric _id in drivers
-          as: "driverInfo"
-        }
-      },
-      { $unwind: "$driverInfo" },
-      // 3) Projektion auf das endgültige Format
-      {
-        $project: {
-          _id: 0,
-          driverId: "$_id",  // numeric driverId
-          code: "$driverInfo.code",
-          name: { $concat: ["$driverInfo.firstName", " ", "$driverInfo.lastName"] },
-          nationality: "$driverInfo.nationality",
-          totalPoints: 1
-        }
-      },
-      // 4) Sortierung nach totalPoints absteigend
-      { $sort: { totalPoints: -1 } }
-    ])
-    .toArray();
-}
-
-/**
- * Berechnet die Constructor Championship Standings:
- * Groupiert nach constructorId (numeric), summiert alle Punkte, und bindet Konstrukteur-Details ein.
- *
- * @returns {Promise<Array>}
- *   Jedes Objekt enthält { constructorId, name, nationality, totalPoints }.
- */
-export async function getConstructorStandings() {
-  const coll = await getCollection("results");
-  return coll
-    .aggregate([
-      // 1) Gruppieren nach constructorId (Numeric) und Punkte aufsummieren
-      {
-        $group: {
-          _id: "$constructorId",
-          totalPoints: { $sum: "$points" }
-        }
-      },
-      // 2) Lookup: Konstrukteur-Daten aus "constructors" einbinden (Numeric _id)
-      {
-        $lookup: {
-          from: "constructors",
-          localField: "_id",  // numeric constructorId
-          foreignField: "_id",
-          as: "constructorInfo"
-        }
-      },
-      { $unwind: "$constructorInfo" },
-      // 3) Projektion auf das endgültige Format
-      {
-        $project: {
-          _id: 0,
-          constructorId: "$_id", // numeric constructorId
-          name: "$constructorInfo.name",
-          nationality: "$constructorInfo.nationality",
-          totalPoints: 1
-        }
-      },
-      // 4) Sortierung nach totalPoints absteigend
-      { $sort: { totalPoints: -1 } }
     ])
     .toArray();
 }
