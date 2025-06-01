@@ -1,12 +1,10 @@
 import adapter from "@sveltejs/adapter-netlify";
 export default {
+  runes: true,
+
   kit: {
     adapter: adapter({
-      edge: false,
-      split: false,
-    }),
-    compilerOptions: {
-      runes: true
-    }
-  },
+      edge: false
+    })
+  }
 };
