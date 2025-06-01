@@ -110,6 +110,9 @@ nav {
   text-decoration: none;
   margin-left: 1rem;
   font-weight: 500;
+  border: 1px solid var(--nav-text);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
 }
 
 .nav-links a:hover {
